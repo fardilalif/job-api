@@ -39,7 +39,9 @@ app.use(
   })
 );
 
-app.get('/', res.send('Hello people, please head to api-docs route.'));
+app.get('/', (req, res) =>
+  res.send('Hello people, please head to api-docs route.')
+);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/jobs', authenticateUser, jobsRouter);
